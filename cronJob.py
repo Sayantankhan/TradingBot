@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_file
 import subprocess
 import datetime
-# from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 
 import markdown
 import markdown.extensions.fenced_code
@@ -9,15 +9,15 @@ import markdown.extensions.fenced_code
 app = Flask(__name__)
 
 # Scheduler Jobs
-# def run_ai():
-#     # subprocess.run(["python", "AITradingbot.ipynb"])
-#     print("do_something is being executed.")
+def run_ai():
+    # subprocess.run(["python", "AITradingbot.ipynb"])
+    print("do_something is being executed.")
 
 # # schedule.every().day.at("10:30").do(run_ai)
 # # schedule.every(3).seconds.do(run_ai)
-# sched = BackgroundScheduler(daemon=True)
-# sched.add_job(run_ai,'interval',seconds=3)
-# sched.start()
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(run_ai,'interval',seconds=3)
+sched.start()
 
 # Api Routes
 @app.route('/')
