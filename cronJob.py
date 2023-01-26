@@ -3,7 +3,7 @@ import datetime
 import markdown
 import markdown.extensions.fenced_code
 from app.fetchStockService import calStockService
-
+import os
 app = Flask(__name__)
 
 # Scheduler Jobs
