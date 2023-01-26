@@ -3,7 +3,7 @@ import datetime
 import markdown
 import markdown.extensions.fenced_code
 from app.fetchStockService import calStockService
-import os
+
 app = Flask(__name__)
 
 # Scheduler Jobs
@@ -25,8 +25,8 @@ def home():
 @app.route('/stock/<stockExchange>/<stock>', methods=['GET'])
 def getStock(stockExchange, stock):
     # calStockService(stockExchange + ':' + stock)
-    # return calStockService()
-    return 'Stock : ' + stockExchange + ':' + stock + ' ' + os.getenv('ALPHA_KEY')
+    return calStockService()
+    # return 'Stock : ' + stockExchange + ':' + stock + ' ' + os.getenv('ALPHA_KEY')
 
 @app.route('/result')
 def result():
