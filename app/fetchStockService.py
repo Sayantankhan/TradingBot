@@ -14,12 +14,14 @@ def calStockService(symbol = "IBM"):
 
     # Construct the API endpoint URL
     url = f"https://www.alphavantage.co/query?function={function}&symbol={symbol}&interval={interval}&apikey={api_key}"
-    print(url)
-    # Make an API request and get the response
-    response = requests.get(url)
+    
+    try:
+        # Make an API request and get the response
+        response = requests.get(url)
+        # Parse the JSON data from the response
+        data = json.loads(response.text)
+        # Print the data
+        return data
+    except Exception as e:
+        return e
 
-    # Parse the JSON data from the response
-    data = json.loads(response.text)
-
-    # Print the data
-    print(data)
