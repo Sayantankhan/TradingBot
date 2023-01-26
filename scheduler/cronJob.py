@@ -1,19 +1,26 @@
 from flask import Flask
-from app.fetchStockService import calStockService
-from json
+from fetchStockService import calStockService
+from dbService import DbConnection
+import json
+
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 app = Flask(__name__)
 
 # Scheduler Jobs
 def runScheduler():
     data = json.load(open('stockList.json'))
-    for stock in data[stock]:
-        calStockService(stock)
+    for stock in data['stocks']:
+        print(stock)
+        doc = calStockService(data['stocks'][stock])
+        DbConnection().saveToDatabaseByBatch(doc['Time Series (5min)'], doc['Time Series (5min)'].keys(), data['stocks'][stock])
 
-# # schedule.every().day.at("10:30").do(run_ai)
-# # schedule.every(3).seconds.do(run_ai)
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(runScheduler,'interval',minutes=3)
+# trigger = CronTrigger(
+#         year="*", month="*", day="*", hour="*", minute="*", second="*"
+#     )
+sched.add_job(runScheduler, 'interval', seconds=5)
 sched.start()
 
 if __name__ == '__main__':
