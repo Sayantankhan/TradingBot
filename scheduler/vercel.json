@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
         {
-            "src": "apiJob.py",
+            "src": "cronJob.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "apiJob.py"
+            "dest": "cronJob.py"
         }
     ]
 }
