@@ -24,8 +24,7 @@ def home():
 
 @app.route('/stock/<stockExchange>/<stock>', methods=['GET'])
 def getStock(stockExchange, stock):
-    # calStockService(stockExchange + ':' + stock)
-    return calStockService()
+    return calStockService(stockExchange + ':' + stock)
     # return 'Stock : ' + stockExchange + ':' + stock + ' ' + os.getenv('ALPHA_KEY')
 
 @app.route('/result')
