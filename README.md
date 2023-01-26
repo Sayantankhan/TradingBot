@@ -1,2 +1,6 @@
 # TradingBot
-Trading Bot
+Requirements:
+* Python 3
+* Flask
+* Vercel
+
