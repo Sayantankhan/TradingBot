@@ -1,5 +1,9 @@
 {
     "stocks" : {
-        "NIKE" : "NYSE:NKE"
+        "NIKE" : "NYSE:NKE",
+        "IBM" : "NYSE:IBM",
+        "RELIANCE" : "NSE:RELIANCE",
+        "TCS" : "NSE:TCS",
+        "AMAZON": "NASDAQ:AMZN"
     }
 }

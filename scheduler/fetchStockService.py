@@ -23,5 +23,6 @@ def calStockService(symbol = "IBM"):
         # Print the data
         return data
     except Exception as e:
-        return e
+        print(e)
+        return None
 

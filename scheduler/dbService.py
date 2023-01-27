@@ -21,9 +21,8 @@ class DbConnection:
             low = doc.get("3. low")
             close = doc.get("4. close")
             volume = doc.get("5. volume")
-            values.append([stock, open, close, high, low, key, volume])
-            print(doc)
+            values.append([stock, open, close, high, low, key, volume, stock + "-" + key])
         
-        # psycopg2.extras.execute_batch(self.cursor, "INSERT INTO {table} (stock_name, open, close, high, low, timestamp, volume) VALUES (%s, %s, %s, %s, %s, %s, %s)".format(table="t_real_time_stock_data"),
-        #                                 values)
-        # self.conn.commit()
+        psycopg2.extras.execute_batch(self.cursor, "INSERT INTO {table} (stock_name, open, close, high, low, timestamp, volume, stockuuid) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT (stockuuid) DO NOTHING".format(table="t_real_time_stock_data"),
+                                        values)
+        self.conn.commit()
