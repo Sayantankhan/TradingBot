@@ -21,7 +21,7 @@ sched = BackgroundScheduler(job_defaults={'max_instances': 5}, daemon=True)
 # trigger = CronTrigger(
 #         year="*", month="*", day="*", hour="*", minute="*", second="*"
 #     )
-sched.add_job(runScheduler, 'interval', seconds=5)
+sched.add_job(runScheduler, 'interval', hours=5)
 sched.start()
 
 if __name__ == '__main__':
